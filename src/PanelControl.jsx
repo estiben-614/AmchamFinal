@@ -20,13 +20,14 @@ function PanelControl({inicioSesion,setInicioSesion}) {
     //Si existe el token y inicioSesion es true
     // if(token && inicioSesion==true)
     if(token && inicioSesion==true){
-      //Cambianos el nombre con la info del token
+      //Imprimimos el nombre para verificar 
       console.log(token.name)
+      
     }
     //Si no lo redirigimos 
-    // else{
-    //   navigation('/panelControl') // TODO: Se deja así para que al recargar la pagina se pueden ver las diferentes combinaciones
-    // }
+    else{
+      navigation('/') 
+    }
     
   }, [])
   

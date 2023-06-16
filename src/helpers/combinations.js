@@ -12,3 +12,9 @@ export const obtenerCombinaciones=async(cantidadCombinaciones,productos)=>{
   
         return combinations
   }
+
+  export  const numeroCombinaciones =()=>{
+    const numero=Math.floor(Math.random() * 100) + 1; // Genera N combinaciones entre 1 y 50 de 2 pedidos
+
+    return numero
+  } 

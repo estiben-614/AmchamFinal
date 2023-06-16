@@ -25,7 +25,7 @@ export const MostrarOrdenes = ({ ordenes ,setMostrarDetalleOrden}) => {
 
                 //Total de cada pedido
                 totalSumaPedido+= hashmap.get(idProducto).cantidad * hashmap.get(idProducto).price
-                console.log(totalSumaPedido)
+                // console.log(totalSumaPedido)
                 return (
                   (
                     <>

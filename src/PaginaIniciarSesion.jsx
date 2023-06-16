@@ -47,6 +47,9 @@ export const PaginaIniciarSesion = ({inicioSesion, setInicioSesion}) => {
           alert('Contraseña y/o correo incorrectos')
         }
       }
+      else{
+        alert('Por favor registrese primero')
+      }
     }
 
     
