@@ -61,7 +61,7 @@ export const Orders = ({ productos }) => {
         <p><strong>Promedio por producto:</strong> <strong>$</strong> {promedio}</p>
 
         <div className='mostrarBotones'>
-        <br /> <br /> <br />
+        <br /> <br /> <br /> <br /> <br /> 
         {/* Mostramos la info de cada Orden y ocultamos el boton siempre y cuando su estado sea diferente de false */}
         { !mostrarDetalleOrden && (<button className='boton' onClick={()=>mostrarPedidos()}>Mostrar Pedidos</button>)}
         {mostrarDetalleOrden && <MostrarOrdenes ordenes={ordenes} setMostrarDetalleOrden={setMostrarDetalleOrden}></MostrarOrdenes>}
