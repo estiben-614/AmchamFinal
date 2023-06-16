@@ -1,27 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { obtenerCombinaciones } from './helpers/combinations';
 import { MostrarOrdenes } from './MostrarOrdenes';
+import { obtenerOrdenes } from './helpers/obtenerOrdenes';
 
 
-const obtenerOrdenes=async(ordenes,setDetallePedidos,setTotal,detallePedidos,setPromedio,totalPedidos)=>{
-  let suma=0
-  await ordenes.forEach(({orden})=>{
-    //SubOrden tiene el detalle de cada pedido
-    orden.forEach(subOrden=>{
-        suma+=subOrden.price
-        setTotal(suma)  
-    })
-    
-    // console.log({orden})
-    //Guarda todos los pedidos
-    setDetallePedidos([...detallePedidos, orden]);
-    // console.log({detallePedidos})
-   
-})
-
-//Obtenemos el promedio como la suma de los productos sobre la cantidad de pedidos multiplicada por 2 
-setPromedio(suma/(totalPedidos*2))
-}
 
 export const Orders = ({ productos }) => {
   const [ordenes, setOrdenes] = useState([]);
@@ -29,24 +11,20 @@ export const Orders = ({ productos }) => {
   const [totalPedidos, setTotalPedidos] = useState(0)
   const [promedio, setPromedio] = useState(0)
   const [detallePedidos, setDetallePedidos] = useState([])
+  const [mostrarDetalleOrden, setMostrarDetalleOrden] = useState(false)
   
   
-  const detalle = ordenes.map(({orden})=>{
-    orden.map(subOrden=>{
-      return <>
-        <li>{subOrden.title}</li>
-      </>
-    })
-  })
-
+ 
+//Función para mostrar pedidos
   const mostrarPedidos=()=>{
-    
-      <MostrarOrdenes ordenes={ordenes}></MostrarOrdenes>
+
+    setMostrarDetalleOrden(true)
+      
   }
     
 
   useEffect(() => {
-    const cantidadCombinaciones = Math.floor(Math.random() * 3) + 1; // Genera N combinaciones entre 1 y 10 de 2 pedidos
+    const cantidadCombinaciones = Math.floor(Math.random() * 50) + 1; // Genera N combinaciones entre 1 y 50 de 2 pedidos
     // console.log({ cantidadCombinaciones });
 
   const obtenerCombinacionesAsync = async () => {
@@ -76,14 +54,20 @@ export const Orders = ({ productos }) => {
 
   return (
     <>
-      <div>Orders</div>
       <div className='infoOrdenes'>
-        <p>Ingresos Totales: {total}</p>
-        <p>Pedidos Totales: {totalPedidos}</p>
-        <p>Cantidad de productos: {totalPedidos * 2}</p>
-        <p>Promedio por producto: {promedio}</p>
-        <button onClick={()=>mostrarPedidos()}>Mostrar Pedidos</button>
-        <MostrarOrdenes ordenes={ordenes}></MostrarOrdenes>
+        <p><strong>Ingresos Totales:</strong> <strong>$</strong>{total}</p>
+        <p><strong>Pedidos Totales:</strong>  {totalPedidos}</p>
+        <p><strong>Cantidad de productos:</strong>  {totalPedidos * 2}</p>
+        <p><strong>Promedio por producto:</strong> <strong>$</strong> {promedio}</p>
+
+        <div className='mostrarBotones'>
+        <br /> <br /> <br />
+        {/* Mostramos la info de cada Orden y ocultamos el boton siempre y cuando su estado sea diferente de false */}
+        { !mostrarDetalleOrden && (<button className='boton' onClick={()=>mostrarPedidos()}>Mostrar Pedidos</button>)}
+        {mostrarDetalleOrden && <MostrarOrdenes ordenes={ordenes} setMostrarDetalleOrden={setMostrarDetalleOrden}></MostrarOrdenes>}
+
+        </div>
+        
         
       </div>
     </>
