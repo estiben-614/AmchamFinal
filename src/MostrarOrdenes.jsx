@@ -14,7 +14,7 @@ export const MostrarOrdenes = ({ ordenes ,setMostrarDetalleOrden}) => {
                 let totalSumaPedido=0
                 const idProducto=subOrden.id
                 const copiaSuborden={...subOrden}
-                console.log(copiaSuborden)
+                // console.log(copiaSuborden)
                 hashmap.set(idProducto,copiaSuborden)
                 if(!hashmap.get(idProducto).cantidad){
                   hashmap.get(idProducto).cantidad=1
