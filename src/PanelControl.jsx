@@ -24,9 +24,9 @@ function PanelControl({inicioSesion,setInicioSesion}) {
       console.log(token.name)
     }
     //Si no lo redirigimos 
-    else{
-      navigation('/panelControl') // TODO: Se deja así para que al recargar la pagina se pueden ver las diferentes combinaciones
-    }
+    // else{
+    //   navigation('/panelControl') // TODO: Se deja así para que al recargar la pagina se pueden ver las diferentes combinaciones
+    // }
     
   }, [])
   
